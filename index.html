@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" class="main">
+<head>
+    <meta charset="UTF-8">
+    <meta viewport="content="width=device-width, initial-scale=1.0">
+    <title>Ahmaide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+
+<div id="sidebar" onmouseover="hoverIn()" onmouseout="hoverOut()" class="open">
+    <span onclick="toggleSidebar()"></span>
+    <ul id="social-links">
+        <li data-link="https://github.com/ahmaide"><i class="fab fa-github"></i></li>
+        <li data-link="https://www.linkedin.com/in/ahmaide-awawda-57b220208/"><i class="fab fa-linkedin-in"></i></li>
+        <li data-link="https://www.facebook.com/ahmaidy.t/"><i class="fab fa-facebook-f"></i></li>
+        <li data-link="https://www.instagram.com/imahmaide/"><i class="fab fa-instagram"></i></li>
+        <li data-link="https://twitter.com/ahmaide0"><i class="fab fa-twitter"></i></li>
+    </ul>
+</div>
+
+<div id="mainContent" class="content-wrapper">
+    <div id="texts" class="content-wrapper">
+        <h1>Welcome to my portfolio... My name is Ahmaide Awawda, an American Backend Developer and Computer Engineering Graduate.</h1>
+        <div class="h2-buttons-container" class="content-wrapper">
+            <div class="h2-container">
+                <h2><i class="fas fa-map-marker-alt"></i>Albuquerque, New Mexico, United States</h2>
+                <h2><i class="fas fa-phone"></i>(505)-804-6052</h2>
+                <h2><i class="fas fa-envelope"></i>ahmaidyt@gmail.com</h2>
+            </div>
+            <div class="buttons-container">
+                <button class="vertical-button" onclick="window.location.href='projects.html'"> Projects</button>
+                <button class="vertical-button"onclick="window.location.href='experiences.html'"> Experiences</button>
+                <button class="vertical-button" onclick="window.open('https://drive.google.com/file/d/10X1Gr7pd1w2Xuh5eNF5dw3PPk7NbDo_E/view?usp=drive_link')">  Resume</button>
+            </div>
+        </div>
+        <h1 style="padding-top: 40px;">My skills</h1>
+        <div class="skills-icons" class="content-wrapper">
+            <div class="icons-row">
+                <img src="logos/django.png" title="Django (Python)">
+                <img src="logos/spring.png" title="Spring Boot (Java)">
+                <img src="logos/html.png" title="HTML">
+                <img src="logos/css.png" title="CSS">
+                <img src="logos/javascript.png" title="JavaScript">
+                <img src="logos/git.png" title="Git">
+                <img src="logos/cpp.png" title="C++">
+                <img src="logos/linux.png" title="Linux">
+            </div>
+            <div class="icons-row">
+                <img src="logos/docker.png" title="Docker">
+                <img src="logos/postgre.png" title="PostgreSQL">
+                <img src="logos/mongodb.png" title="MongoDB">
+                <img src="logos/kafka.png" title="Kafka">
+                <img src="logos/android.png" title="Android">
+                <img src="logos/tensorflow.png" title="TensorFlow">
+            </div>
+        </div>
+    </div>  
+</div>
+
+<script src="scripts.js"></script>
+
+</body>
+</html>
