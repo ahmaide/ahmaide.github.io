@@ -1,27 +1,51 @@
 var x = false;
     
-var sidebar = document.getElementById("sidebar");
-var icons = sidebar.querySelectorAll('ul li i');
+const sidebar = document.getElementById('sidebar');
+const socialLinks = document.querySelectorAll('#social-links li i');
+const verticalSlide = document.querySelector('.vertical-slide');
+const label = verticalSlide.querySelector('label');
+const body = document.querySelector('body');
+const h1Elements = document.querySelectorAll('h1');
+const h2Elements = document.querySelectorAll('h2');
+const span = document.getElementById('span');
+
+
 
 function hoverIn(){
-    sidebar.style.width = "150px";
-    icons.forEach(function(icon) {
-        icon.style.opacity = 1;
-    });
-    sidebar.querySelector('span').style.setProperty('--rotate-arrow', 'rotate(135deg)');
+    sidebar.style.backgroundImage = "url('Backgrounds/background.jpg')";
+    socialLinks.forEach((icon, index) => {
+        icon.style.color= "#000";
+    })
+    span.style.backgroundImage = "url('Backgrounds/sidebarBackground.jpg')";
+    label.style.borderColor = '#FFF';
+    verticalSlide.classList.add('white-label');
+    body.style.backgroundImage = "url('Backgrounds/sidebarBackground.jpg')";
+    h1Elements.forEach(element =>{
+        element.style.color = "#FFF";
+    })
+    h2Elements.forEach(element =>{
+        element.style.color = "#FFF";
+    })
 }
 
 function hoverOut(){
-    if(!x){
-        sidebar.style.width = "20px";
-        icons.forEach(function(icon) {
-            icon.style.opacity = 0;
-        });
-        sidebar.querySelector('span').style.setProperty('--rotate-arrow', 'rotate(-45deg)');
-    }
+    sidebar.style.backgroundImage = "url('Backgrounds/sidebarBackground.jpg')";
+    socialLinks.forEach((icon, index) => {
+        icon.style.color= "#FFF";
+    })
+    span.style.backgroundImage = "url('Backgrounds/background.jpg')";
+    label.style.borderColor = '#000';
+    verticalSlide.classList.remove('white-label');
+    body.style.backgroundImage = "url('Backgrounds/background.jpg')";
+    h1Elements.forEach(element =>{
+        element.style.color = "#000";
+    })
+    h2Elements.forEach(element =>{
+        element.style.color = "#000";
+    })
 }
 
-function toggleSidebar(){
+function inverse(){
     x = !x;
     if (x)
         hoverIn();
@@ -29,18 +53,7 @@ function toggleSidebar(){
         hoverOut();
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    var sidebarLinks = document.querySelectorAll('#social-links li');
 
-    sidebarLinks.forEach(function(li) {
-        li.addEventListener('click', function() {
-            var link = this.getAttribute('data-link');
-            if(link) {
-                window.open(link, '_blank');
-            }
-        });
-    });
-});
 
 
 function addProject(title, imageSrc, description, tools, githubLink, reportLink, youtubeLink) {

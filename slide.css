@@ -1,0 +1,35 @@
+.vertical-slide {
+    display: inline-block;
+    position: relative;
+}
+
+.vertical-slide input[type="checkbox"] {
+    display: none;
+}
+
+.vertical-slide label {
+    display: block;
+    width: 22px;
+    height: 90%;
+    margin-top: 10%;
+    position: absolute;
+    cursor: pointer;
+    border: 2px solid #000000; 
+    border-radius: 30px; 
+    transition: .6s;
+}
+
+.vertical-slide label:after {
+    content: '';
+    position: absolute;
+    width: 22px; 
+    height: 22px; 
+    border-radius: 50%; 
+    background-color: #000000;
+    transition: .6s;
+}
+
+.vertical-slide.white-label label:after {
+    background-color: #FFFFFF;
+    transform: translateY(50px);
+}

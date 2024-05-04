@@ -5,21 +5,28 @@
     <meta viewport="content="width=device-width, initial-scale=1.0">
     <title>Ahmaide</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="slide.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
-
-<div id="sidebar" onmouseover="hoverIn()" onmouseout="hoverOut()" class="open">
-    <span onclick="toggleSidebar()"></span>
-    <ul id="social-links">
-        <li data-link="https://github.com/ahmaide"><i class="fab fa-github"></i></li>
-        <li data-link="https://www.linkedin.com/in/ahmaide-awawda-57b220208/"><i class="fab fa-linkedin-in"></i></li>
-        <li data-link="https://twitter.com/ahmaide0"><i class="fab fa-twitter"></i></li>
-        <li data-link="https://codeforces.com/profile/ahmaide"><i class="fab fa-codeforces"></i></li>
-    </ul>
-</div>
-
-<div id="mainContent" class="content-wrapper">
+    <div id="sidebar" class="open">
+        <span id="span" class="vertical-slide">
+            <input type="checkbox" id="slide-toggle" onclick="inverse()">
+            <label for="slide-toggle"></label>
+          </span>
+        <ul id="social-links">
+            <li data-link="https://github.com/ahmaide" title="GitHub"><i class="fab fa-github"></i></li>
+            <li data-link="https://www.linkedin.com/in/ahmaide-awawda-57b220208/" title="LinkedIn"><i class="fab fa-linkedin-in"></i></li>
+            <li data-link="https://twitter.com/ahmaide0"><i class="fab fa-twitter" title="Twitter"></i></li>
+            <li data-link="https://codeforces.com/profile/ahmaide" title="codeforces">
+                <i class="fab">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4.5 7.5A1.5 1.5 0 0 1 6 9v10.5A1.5 1.5 0 0 1 4.5 21h-3C.673 21 0 20.328 0 19.5V9c0-.828.673-1.5 1.5-1.5zm9-4.5A1.5 1.5 0 0 1 15 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-3c-.827 0-1.5-.672-1.5-1.5v-15c0-.828.673-1.5 1.5-1.5zm9 7.5A1.5 1.5 0 0 1 24 12v7.5a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5V12a1.5 1.5 0 0 1 1.5-1.5z"/>
+                    </svg>
+                </i>
+            </li>
+        </ul>        
+    </div>
     <div id="texts" class="content-wrapper">
         <h1>Welcome to my portfolio. My name is Ahmaide Awawda, an American Backend Developer and Computer Engineering Graduate.</h1>
         <div class="h2-buttons-container" class="content-wrapper">
@@ -34,7 +41,7 @@
                 <button class="vertical-button" onclick="window.open('https://drive.google.com/file/d/10X1Gr7pd1w2Xuh5eNF5dw3PPk7NbDo_E/view?usp=drive_link')">  Resume</button>
             </div>
         </div>
-        <h1 style="padding-top: 40px;">My skills</h1>
+        <h1 >My skills</h1>
         <div class="skills-icons" class="content-wrapper">
             <div class="icons-row">
                 <img src="logos/django.png" title="Django (Python)">
@@ -56,7 +63,6 @@
             </div>
         </div>
     </div>  
-</div>
 
 <script src="scripts.js"></script>
 
