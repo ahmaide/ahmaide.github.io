@@ -136,7 +136,6 @@ h2 {
 }
 
 .skills-icons {
-    /* padding-left: 300px; */
     width: 850px; 
     display: flex;
     flex-direction: column;
@@ -156,10 +155,12 @@ h2 {
     height: 88px;
 }
 
+
+
+
 .secondary body {
     font-family: 'Times New Roman', Times, serif;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 0;
@@ -184,7 +185,7 @@ h2 {
   }
 
   .main-title {
-    margin-top: 50px;
+    margin-top: 55px;
     font-size: 2rem;
     font-weight: bold;
   }
@@ -193,7 +194,8 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 700px;
+    width: 80%;
+    max-width: 800px;
     margin: 20px auto;
     background-color: #fff;
     padding: 20px;
