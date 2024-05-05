@@ -55,7 +55,7 @@
 }
 
 #social-links {
-    gap: 55%;
+    gap: 120px;
     list-style-type: none;
     padding: 0;
     display: flex;
