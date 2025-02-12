@@ -69,6 +69,7 @@
 
 
 #texts {
+  size: 5px;
   gap: 10px;
   margin-top: 3%;
   text-align: center; 
@@ -85,7 +86,7 @@ h1 ,h2 {
 
 h1 {
   margin-top: 10px;;
-    width: 850px;
+    width: 1050px;
 }
 
 h2 {
