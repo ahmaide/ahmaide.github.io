@@ -1,38 +1,130 @@
 <!DOCTYPE html>
-<html lang="en" class="secondary" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Ahmaide Awawda | Projects</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dark-theme">
 
-<a href="/index.html" class="home-button">Home</a>
+    <nav class="glass-nav">
+        <div class="logo">AA<span class="dot">.</span></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="projects.html" class="active-link">Projects</a>
+            
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
+                <span class="slider round"></span>
+                <i class="fas fa-moon icon-dark"></i>
+                <i class="fas fa-sun icon-light"></i>
+            </label>
+        </div>
+    </nav>
 
-<div class="main-title">My Projects</div>
+    <section class="projects-header">
+        <h1>Selected <span class="gradient-text">Works</span></h1>
+        <p>A collection of software, architecture, and AI implementations.</p>
+    </section>
 
-<div id="projects-container"></div> 
+    <main class="projects-container">
+        <div id="projects-grid" class="grid-layout">
+            </div>
+    </main>
 
-<script src="scripts.js"></script>
+    <footer>
+        <p class="copyright">© 2025 Ahmaide Awawda • Albuquerque, NM</p>
+    </footer>
 
-<script>
-  function loadProjects() {
-    addProject("Farm Supervisor", "projects_images/farmSupervisor.png", "A mobile application developed for farmers, that ables them to create account, log in, add lands and crop with their history. The application's main feature is that it is able to send the farmers recommendation  based on their plants information, behaivor, and simular farmers too, in addition the app provides the farmers with warning related to upcoming weather conditions and area pests.", "Android Studio, Django, MongoDB, JWT Tokens. Applying microservices architecture.", "https://github.com/ahmaide/Farm-Supervisor-Graduation-Project", "https://drive.google.com/file/d/12Nx3t2CPqfSSH6D-fozEY7MURpyAc14Z/view?usp=drive_link", "https://www.youtube.com/watch?v=BEska5wem78", true, true);
-    addProject("Task Manager Backend Service", "projects_images/taskManager.png", "A backend service the allows authenticated users, to create and reserve their own tasks and sharing results.", "Spring boot, MySQL, MongoDB, Kafka, JWT Tokens", "https://github.com/ahmaide/springboot-backend-internship", "", "", false, false);
-    addProject("Multicycle RISC Processor", "projects_images/architecture.png", "A Multicycle RISC processor design and implementation, with a specified instruction set, including registers, data memory, ALU, control unit, and brach stack.", "Verilog HDL", "https://github.com/ahmaide/Computer-Architecture-Projects/tree/main/Multicycle%20Processor%20Project", "https://drive.google.com/file/d/1uO81LGORloSXka5xKPFjiS0_6ChRZ4Ji/view?usp=drive_link", "", false, true);
-    addProject("Image Retrieval System", "projects_images/color_features.jpg", "An Image retrieval system, with implementation of Color Histograms and color moments on the waggle dataset to classify images, alongside the system's evaluation.", "Python, Kaggle Dataset, OpenCV.", "https://github.com/ahmaide/Computer-Vision-Projects/tree/main/Project%202%20(Color%20Feature%20Extraction)", "https://drive.google.com/file/d/1V8nd6PJgZXLo8JXuyP1nYDG-FCW3BF-D/view?usp=sharing", "", false, true);
-    addProject("Chocolate Factory Simulation", "projects_images/realTime.png", "A multithreading simulation with dynamic argument variables for chocolate factory with different types of workers, where each worker is presented in a thread.", "C++, OpenGL, Makefile", "https://github.com/ahmaide/RealTimeProjects-MultiprocessingAndMultithreading-IncludingOpenGL/tree/main/Project%203%20(Pthreads%20Under%20Linux)", "", "", false, false);
-    addProject("Maze Solving Robot", "projects_images/interface.jpg", "A built up robot using Arduino Uno, sensors, and motors with encoders. That tends to memorize a 16x16 maze then solve it by calculating its shortest path.", "Arduino Uno, IR Sernors, Ultrasonic Sensors, Motors with encoders, Wires, Algorithm Simulator, C++.", "https://github.com/ahmaide/MicroMouse-MazeSolving-InterfacingTechniquesProject", "", "https://trello.com/b/7iX6toFh/encs4380-final-project", true, false);
-    addProject("Handwritten Character Recognition Using CNN", "projects_images/cnn.png", "Handwritten Character Recognition system Using Convolutional Neural Networks (Deep Learning Implementation). Where it takes a dataset of different shapes of characters in addition to data augmentation. and the implementation of transfer learning and system evaluating.", "Python, Jupyter Notebook, Tensorflow, OpenCV.", "https://github.com/ahmaide/Computer-Vision-Projects/tree/main/Project%203%20(AHCR%20CNN)", "https://drive.google.com/drive/u/0/folders/1rBMv_-64U-WAwwei0D7qb2xvmlrbykre", "", false, true);
-    addProject("Tweet Emotion Classifier", "projects_images/tweet_emotion.png", "An application that takes a set of tweets that also contains emojis to train with, then classifies a given tweet to be either positive or negative. The system is also evaluated", "Python, Scikit-Learn, Pandas, a set of 45000 tweets.", "https://github.com/ahmaide/Artificial-Intelligence---Projects/blob/main/Project%202%20-%20Tweets%20Classification/preprocess.py", "https://drive.google.com/drive/u/0/folders/1rBMv_-64U-WAwwei0D7qb2xvmlrbykre", "", false, true);
+    <script src="scripts.js"></script>
 
-  }
+    <script>
+        function loadProjects() {    
+            addProject(
+                "Farm Supervisor", 
+                "projects_images/farmSupervisor.png", 
+                "A mobile application developed for farmers, that enables them to create accounts, log in, add lands and crops with their history. The app sends recommendation based on plant info, behavior, and similar farmers. It also warns of weather conditions and pests.", 
+                "Android Studio, Django, MongoDB, JWT Tokens, Microservices", 
+                "https://github.com/ahmaide/Farm-Supervisor-Graduation-Project", 
+                "https://drive.google.com/file/d/12Nx3t2CPqfSSH6D-fozEY7MURpyAc14Z/view?usp=drive_link", 
+                "https://www.youtube.com/watch?v=BEska5wem78"
+            );
 
-  document.addEventListener('DOMContentLoaded', loadProjects);
-</script>
+            addProject(
+                "Task Manager Backend", 
+                "projects_images/taskManager.png", 
+                "A backend service that allows authenticated users to create and reserve their own tasks and share results.", 
+                "Spring Boot, MySQL, MongoDB, Kafka, JWT Tokens", 
+                "https://github.com/ahmaide/springboot-backend-internship", 
+                "", 
+                ""
+            );
 
+            addProject(
+                "Multicycle RISC Processor", 
+                "projects_images/architecture.png", 
+                "A Multicycle RISC processor design and implementation, with a specified instruction set, including registers, data memory, ALU, control unit, and branch stack.", 
+                "Verilog HDL", 
+                "https://github.com/ahmaide/Computer-Architecture-Projects/tree/main/Multicycle%20Processor%20Project", 
+                "https://drive.google.com/file/d/1uO81LGORloSXka5xKPFjiS0_6ChRZ4Ji/view?usp=drive_link", 
+                ""
+            );
 
+            addProject(
+                "Image Retrieval System", 
+                "projects_images/color_features.jpg", 
+                "An Image retrieval system, with implementation of Color Histograms and color moments on the waggle dataset to classify images, alongside the system's evaluation.", 
+                "Python, Kaggle Dataset, OpenCV", 
+                "https://github.com/ahmaide/Computer-Vision-Projects/tree/main/Project%202%20(Color%20Feature%20Extraction)", 
+                "https://drive.google.com/file/d/1V8nd6PJgZXLo8JXuyP1nYDG-FCW3BF-D/view?usp=sharing", 
+                ""
+            );
+
+            addProject(
+                "Chocolate Factory Sim", 
+                "projects_images/realTime.png", 
+                "A multithreading simulation with dynamic argument variables for a chocolate factory with different types of workers, where each worker is represented in a thread.", 
+                "C++, OpenGL, Makefile", 
+                "https://github.com/ahmaide/RealTimeProjects-MultiprocessingAndMultithreading-IncludingOpenGL/tree/main/Project%203%20(Pthreads%20Under%20Linux)", 
+                "", 
+                ""
+            );
+
+            addProject(
+                "Maze Solving Robot", 
+                "projects_images/interface.jpg", 
+                "A robot using Arduino Uno, sensors, and encoders. It memorizes a 16x16 maze then solves it by calculating the shortest path.", 
+                "Arduino Uno, IR Sensors, Ultrasonic, C++", 
+                "https://github.com/ahmaide/MicroMouse-MazeSolving-InterfacingTechniquesProject", 
+                "", 
+                "https://trello.com/b/7iX6toFh/encs4380-final-project" 
+            );
+
+            addProject(
+                "Handwritten Recognition", 
+                "projects_images/cnn.png", 
+                "Handwritten Character Recognition system using CNNs (Deep Learning). Uses dataset augmentation, transfer learning, and system evaluation.", 
+                "Python, Jupyter, Tensorflow, OpenCV", 
+                "https://github.com/ahmaide/Computer-Vision-Projects/tree/main/Project%203%20(AHCR%20CNN)", 
+                "https://drive.google.com/drive/u/0/folders/1rBMv_-64U-WAwwei0D7qb2xvmlrbykre", 
+                ""
+            );
+
+            addProject(
+                "Tweet Emotion Classifier", 
+                "projects_images/tweet_emotion.png", 
+                "An application that takes a set of tweets containing emojis to train, then classifies a given tweet as positive or negative.", 
+                "Python, Scikit-Learn, Pandas", 
+                "https://github.com/ahmaide/Artificial-Intelligence---Projects/blob/main/Project%202%20-%20Tweets%20Classification/preprocess.py", 
+                "https://drive.google.com/drive/u/0/folders/1rBMv_-64U-WAwwei0D7qb2xvmlrbykre", 
+                ""
+            );
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProjects);
+    </script>
 </body>
 </html>

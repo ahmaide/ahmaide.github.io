@@ -1,128 +1,131 @@
-var x = false;
-    
-const sidebar = document.getElementById('sidebar');
-const socialLinks = document.querySelectorAll('#social-links li i');
-const verticalSlide = document.querySelector('.vertical-slide');
-const label = verticalSlide.querySelector('label');
-const body = document.querySelector('body');
-const h1Elements = document.querySelectorAll('h1');
-const h2Elements = document.querySelectorAll('h2');
-const span = document.getElementById('span');
-
-
-
-function hoverIn(){
-    sidebar.style.backgroundImage = "url('Backgrounds/background.jpg')";
-    socialLinks.forEach((icon, index) => {
-        icon.style.color= "#000";
-    })
-    span.style.backgroundImage = "url('Backgrounds/sidebarBackground.jpg')";
-    label.style.borderColor = '#FFF';
-    verticalSlide.classList.add('white-label');
-    body.style.backgroundImage = "url('Backgrounds/sidebarBackground.jpg')";
-    h1Elements.forEach(element =>{
-        element.style.color = "#FFF";
-    })
-    h2Elements.forEach(element =>{
-        element.style.color = "#FFF";
-    })
+/* --- 1. Theme Logic (Same as before) --- */
+function toggleTheme() {
+    const body = document.body;
+    const isDark = body.getAttribute('data-theme') !== 'light';
+    const newTheme = isDark ? 'light' : 'dark';
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
 }
 
-function hoverOut(){
-    sidebar.style.backgroundImage = "url('Backgrounds/sidebarBackground.jpg')";
-    socialLinks.forEach((icon, index) => {
-        icon.style.color= "#FFF";
-    })
-    span.style.backgroundImage = "url('Backgrounds/background.jpg')";
-    label.style.borderColor = '#000';
-    verticalSlide.classList.remove('white-label');
-    body.style.backgroundImage = "url('Backgrounds/background.jpg')";
-    h1Elements.forEach(element =>{
-        element.style.color = "#000";
-    })
-    h2Elements.forEach(element =>{
-        element.style.color = "#000";
-    })
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    const toggleSwitch = document.getElementById('theme-toggle');
 
-function inverse(){
-    x = !x;
-    if (x)
-        hoverIn();
-    else
-        hoverOut();
-}
+    if (savedTheme === 'light') {
+        document.body.setAttribute('data-theme', 'light');
+        if(toggleSwitch) toggleSwitch.checked = true;
+    } else {
+        document.body.setAttribute('data-theme', 'dark');
+    }
 
-function openLink(url) {
-    window.open(url, '_blank');
-}
+    /* --- Contact Form Logic (Same as before) --- */
+    const form = document.getElementById('contact-form');
+    const notification = document.getElementById('notification');
 
+    if (form) {
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (response.ok) {
+                    form.reset();
+                    showNotification();
+                } else {
+                    alert("Oops! There was a problem sending your message.");
+                }
+            } catch (error) {
+                alert("Oops! There was a problem sending your message.");
+            }
+        });
+    }
 
-
+    function showNotification() {
+        notification.classList.add('show');
+        setTimeout(() => { notification.classList.remove('show'); }, 4000);
+    }
+});
 
 
 function addProject(title, imageSrc, description, tools, githubLink, reportLink, youtubeLink) {
-    const projectContainer = document.getElementById('projects-container');
+    const grid = document.getElementById('projects-grid');
+    if (!grid) return; 
 
-    const project = document.createElement('div');
-    project.className = 'project';
+    // 1. Create Card
+    const card = document.createElement('div');
+    card.className = 'project-card glass-card';
 
-    const imageDiv = document.createElement('div');
-    imageDiv.className = 'project-image';
+    // 2. Image Section
+    const imgContainer = document.createElement('div');
+    imgContainer.className = 'card-image';
     const img = document.createElement('img');
     img.src = imageSrc;
     img.alt = title;
-    imageDiv.appendChild(img);
+    // Fallback if image fails to load
+    img.onerror = function() { 
+        this.src = 'https://via.placeholder.com/400x250/0b0e14/38bdf8?text=Project+Image'; 
+    };
+    imgContainer.appendChild(img);
 
-    const detailsDiv = document.createElement('div');
-    detailsDiv.className = 'project-details';
-    const titleDiv = document.createElement('div');
-    titleDiv.className = 'project-title';
-    titleDiv.textContent = title;
-    const descriptionDiv = document.createElement('div');
-    descriptionDiv.className = 'project-description';
-    descriptionDiv.textContent = description;
-    const toolsDiv = document.createElement('div');
-    toolsDiv.className = 'tools';
-    toolsDiv.textContent = 'Tools: ' + tools;
+    // 3. Content Section
+    const content = document.createElement('div');
+    content.className = 'card-content';
 
-    const buttonsDiv = document.createElement('div');
-    buttonsDiv.className = 'project-buttons';
+    const h3 = document.createElement('h3');
+    h3.textContent = title;
 
-    const githubLi = document.createElement('li');
-    githubLi.onclick = function() { window.location.href = githubLink; };
-    const githubIcon = document.createElement('i');
-    githubIcon.className = 'fab fa-github';
-    githubLi.appendChild(githubIcon);
-    buttonsDiv.appendChild(githubLi);
+    const p = document.createElement('p');
+    p.textContent = description;
 
-    if (reportLink) {
-        const reportA = document.createElement('a');
-        reportA.href = reportLink;
-        reportA.textContent = 'Report';
-        buttonsDiv.appendChild(reportA);
+    // 4. Tools (Split string into tags)
+    const toolsContainer = document.createElement('div');
+    toolsContainer.className = 'tech-tags';
+    if (tools) {
+        const toolList = tools.split(',');
+        toolList.forEach(tool => {
+            const span = document.createElement('span');
+            span.textContent = tool.trim();
+            toolsContainer.appendChild(span);
+        });
     }
 
+    // 5. Links Buttons
+    const linksContainer = document.createElement('div');
+    linksContainer.className = 'card-links';
+
+    if (githubLink) {
+        const btn = createLinkBtn(githubLink, 'fab fa-github', 'Code');
+        linksContainer.appendChild(btn);
+    }
     if (youtubeLink) {
-        const youtubeA = document.createElement('a');
-        youtubeA.href = youtubeLink;
-        youtubeA.textContent = 'Youtube';
-        buttonsDiv.appendChild(youtubeA);
+        const btn = createLinkBtn(youtubeLink, 'fab fa-youtube', 'Demo');
+        linksContainer.appendChild(btn);
+    }
+    if (reportLink) {
+        const btn = createLinkBtn(reportLink, 'fas fa-file-alt', 'Report');
+        linksContainer.appendChild(btn);
     }
 
-    detailsDiv.appendChild(titleDiv);
-    detailsDiv.appendChild(descriptionDiv);
-    detailsDiv.appendChild(toolsDiv);
-    detailsDiv.appendChild(buttonsDiv);
+    // Assemble
+    content.appendChild(h3);
+    content.appendChild(p);
+    content.appendChild(toolsContainer);
+    content.appendChild(linksContainer);
 
-    project.appendChild(imageDiv);
-    project.appendChild(detailsDiv);
-    projectContainer.appendChild(project);
-
-    const separator = document.createElement('div');
-    separator.className = 'separator';
-    projectContainer.appendChild(separator);
+    card.appendChild(imgContainer);
+    card.appendChild(content);
+    grid.appendChild(card);
 }
 
-
-
+function createLinkBtn(url, iconClass, text) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.className = 'project-btn';
+    a.innerHTML = `<i class="${iconClass}"></i> ${text}`;
+    return a;
+}

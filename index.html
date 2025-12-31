@@ -1,73 +1,102 @@
 <!DOCTYPE html>
-<html lang="en" class = "main" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta viewport="content="width=device-width, initial-scale=1.0">
-    <title>Ahmaide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmaide Awawda | Robotics & AI Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="slide.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div id="sidebar" class="open">
-        <span id="span" class="vertical-slide">
-            <input type="checkbox" id="slide-toggle" onclick="inverse()">
-            <label for="slide-toggle"></label>
-        </span>
-        <ul id="social-links">
-            <li onclick="openLink('https://github.com/ahmaide')" title="GitHub"><i class="fab fa-github"></i></li>
-            <li onclick="openLink('https://www.linkedin.com/in/ahmaide-awawda-57b220208/')" title="LinkedIn"><i class="fab fa-linkedin-in"></i></li>
-            <li onclick="openLink('https://twitter.com/ahmaide0')" title="Twitter"><i class="fab fa-twitter"></i></li>
-            <li onclick="openLink('https://codeforces.com/profile/ahmaide')" title="codeforces">
-                <i class="fab">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M4.5 7.5A1.5 1.5 0 0 1 6 9v10.5A1.5 1.5 0 0 1 4.5 21h-3C.673 21 0 20.328 0 19.5V9c0-.828.673-1.5 1.5-1.5zm9-4.5A1.5 1.5 0 0 1 15 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-3c-.827 0-1.5-.672-1.5-1.5v-15c0-.828.673-1.5 1.5-1.5zm9 7.5A1.5 1.5 0 0 1 24 12v7.5a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5V12a1.5 1.5 0 0 1 1.5-1.5z"/>
-                    </svg>
-                </i>
-            </li>
-        </ul>                
+<body class="dark-theme">
+    
+    <nav class="glass-nav">
+        <div class="logo">AA<span class="dot">.</span></div>
+        <div class="nav-links">
+            <a href="projects.html">Projects</a>
+            <a href="#contact-section">Contact</a>
+            
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
+                <span class="slider round"></span>
+                <i class="fas fa-moon icon-dark"></i>
+                <i class="fas fa-sun icon-light"></i>
+            </label>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="badge">Operational Robotics Area Manager</div>
+            <h1><span class="gradient-text">Ahmaide Awawda</span></h1>
+            <p>
+                Masters Candidate in CS @ UNM. Engineering Graduate from Birzeit. 
+                Merging <strong>Amazon Operations</strong> leadership with high-performance <strong>Backend Development</strong> and <strong>AI</strong>.
+            </p>
+            
+            <div class="social-links-hero">
+                <a href="https://www.linkedin.com/in/ahmaide-awawda/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/ahmaide" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://codeforces.com/profile/ahmaide" target="_blank" title="Codeforces"><i class="fas fa-code"></i></a>
+                <a href="mailto:ahmaidyt@gmail.com" title="Send Email"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="Resume_Ahmaide.pdf" class="btn primary-btn"><i class="fas fa-download"></i> Resume</a>
+            </div>
+        </div>
+
+        <div class="hero-image-container">
+            <div class="profile-wrapper">
+                <div class="tech-border"></div>
+                <img src="Backgrounds/me.jpeg" alt="Ahmaide Awawda" class="profile-pic">
+            </div>
+        </div>
+    </section>
+
+    <section class="info-grid">
+        <div class="card glass-card">
+            <i class="fas fa-brain accent-icon"></i>
+            <h3>AI & ML</h3>
+            <p>TensorFlow, Optimization Tools</p>
+        </div>
+        <div class="card glass-card">
+            <i class="fas fa-server accent-icon"></i>
+            <h3>Backend</h3>
+            <p>Spring Boot, Django, Kafka</p>
+        </div>
+        <div class="card glass-card">
+            <i class="fas fa-chart-line accent-icon"></i>
+            <h3>Leadership</h3>
+            <p>Ops Manager @ Amazon</p>
+        </div>
+    </section>
+
+    <section id="contact-section" class="contact-section">
+        <div class="contact-container">
+            <h2>Let's Connect</h2>
+            <p class="contact-sub">Have a project in mind or want to discuss Robotics? Send me a message.</p>
+            
+            <form id="contact-form" action="https://formspree.io/f/mzdzpdoo" method="POST" class="contact-form">
+                <div class="input-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
+                <button type="submit" class="btn primary-btn full-width">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="notification" class="notification-toast">
+        <i class="fas fa-check-circle"></i> Message Sent Successfully!
     </div>
-    <div id="texts" class="content-wrapper">
-        <h1>Welcome to the portfolio of Ahmaide Awawda</h1>
-        <h1>Currently serving as an Operational Robotics Area Manager at Amazon and an enthusiastic backend developer with a strong interest in AI. With a Bachelor's degree in Computer Engineering from Birzeit University and currently advancing through a Master’s in Computer Science at the University of New Mexico, an Albuquerque-based professional who is keen on connecting with industry leaders and like-minded professionals to explore potential collaborations.</h1>
-        <div class="h2-buttons-container" class="content-wrapper">
-            <div class="h2-container">
-                <h2><i class="fas fa-map-marker-alt"></i>Albuquerque, New Mexico, United States</h2>
-                <h2><i class="fas fa-phone"></i>(505)-804-6052</h2>
-                <h2><i class="fas fa-envelope"></i>ahmaidyt@gmail.com</h2>
-            </div>
-            <div class="buttons-container">
-                <button class="vertical-button" onclick="window.location.href='projects.html'"> Projects</button>
-                <button class="vertical-button"onclick="window.location.href='experiences.html'"> Experiences</button>
-                <button class="vertical-button" onclick="window.location.href='Resume_Ahmaide.pdf'">  Resume</button>
-            </div>
-        </div>
-        <h1 >My skills</h1>
-        <div class="skills-icons" class="content-wrapper">
-            <div class="icons-row">
-                <img src="logos/django.png" title="Django (Python)">
-                <img src="logos/spring.png" title="Spring Boot (Java)">
-                <img src="logos/html.png" title="HTML">
-                <img src="logos/css.png" title="CSS">
-                <img src="logos/javascript.png" title="JavaScript">
-                <img src="logos/git.png" title="Git">
-                <img src="logos/cpp.png" title="C++">
-                <img src="logos/linux.png" title="Linux">
-            </div>
-            <div class="icons-row">
-                <img src="logos/jwt.png" title="JWT Authentication">
-                <img src="logos/docker.png" title="Docker">
-                <img src="logos/postgre.png" title="PostgreSQL">
-                <img src="logos/mongodb.png" title="MongoDB">
-                <img src="logos/shell.png" title="Shell Script">
-                <img src="logos/kafka.png" title="Kafka">
-                <img src="logos/android.png" title="Android">
-                <img src="logos/tensorflow.png" title="TensorFlow">
-            </div>
-        </div>
-    </div>  
 
-<script src="scripts.js"></script>
+    <footer>
+        <p class="copyright">© 2025 Ahmaide Awawda • Albuquerque, NM</p>
+    </footer>
 
+    <script src="scripts.js"></script>
 </body>
 </html>
